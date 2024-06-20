@@ -45,7 +45,7 @@ router.get('/:taste', async(req, res) => {
   }
 })
 
-
+// using put method to update the value
 router.put('/:id', async(req, res) => {
   try {
     const menuitemId = req.params.id;
@@ -65,6 +65,22 @@ router.put('/:id', async(req, res) => {
     res.status(500).json({error: "Invalid Server"});
   }
 
+})
+
+// using delete method to delete the value
+router.delete('/:id', async(req, res) => {
+  try {
+    const menuitemId = req.params.id;
+    const response = await MenuItem.findByIdAndDelete(menuitemId);
+    if(!response){
+      return res.status(404).json({error: "MenuItem not Deleted"});
+    }
+    console.log('data deleted');
+    res.status(200).json({message: "MenuItem deleted Succcessfully"});
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({error: "MenuItem shows Error to delete"});
+  }
 })
 
 module.exports = router;
