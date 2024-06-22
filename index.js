@@ -1,7 +1,8 @@
+//dotenv config
 require('dotenv').config()
 const express = require('express');
 const app = express();
-const port = 3000;
+const PORT = process.env.PORT || 3000;
 // const personRoutes = require('./src/routes/personRoutes.js')
 const DishItem = require('./src/models/DishItem.models.js');
 const database = require('./src/db/database.js');
@@ -37,7 +38,7 @@ const menuItemRoutes = require('./src/routes/menuItemRoutes.js');
 app.use('/menuitem', menuItemRoutes);
 
 
-app.listen(process.env.PORT, () => {
-  console.log(`Server runt at port ${port}`)
+app.listen(PORT, () => {
+  console.log(`Server run at port 3000`);
 })
 
